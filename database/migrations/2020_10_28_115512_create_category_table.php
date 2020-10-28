@@ -15,10 +15,10 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->string('image');
-            $table->text('desc');
+            $table->string('category_name');
+            $table->string('category_slug');
+            $table->string('category_image');
+            $table->text('category_desc');
             $table->integer('parent_id')->default(0);
             $table->timestamps();
         });
