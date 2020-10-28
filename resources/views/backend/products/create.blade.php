@@ -19,6 +19,15 @@
             <input type="text" name="product_name" class="form-control" id="product_name" value="{{old('product_name')}}">
         </div>
         <div class="form-group">
+            <label for="product_category">Danh mục sản phẩm:</label>
+            <select name="category_id" id="">
+                <option value="">--Chọn danh mục--</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             <label for="product_status">Trạng thái sản phẩm:</label>
             <input type="radio" checked name="product_status" id="product_status" value="1"> Đang mở bán
             <input type="radio" name="product_status" id="product_status" value="0"> Tạm ngừng bán

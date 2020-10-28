@@ -72,8 +72,11 @@ class CategoryController extends Controller
     //Xoá sản phẩm
     public function destroy($id){
 
-        echo "<br>id: ".$id;
+        $countProducts = DB::table('products')->where('category_id',$id)->count();
 
+        if ($countProducts > 0) {
+            return redirect("/backend/category/index")->with('status', 'xóa tất cả các sản phẩm thuộc danh mục này trước khi xóa danh mục !');
+        }
         //Laấy đối tượng model dựa vào biến $id
         $category = CategoryModel::findOrFail($id);
         $category->delete();

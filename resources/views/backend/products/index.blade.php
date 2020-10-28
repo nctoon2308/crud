@@ -12,6 +12,7 @@
                 <input type="submit" name="search" class="btn btn-success" value="Lọc kết quả">
             </div>
             <input type="hidden" name="page" value="1">
+
         </form>
     </div>
     {{$products->links()}}
@@ -55,7 +56,7 @@
             <td>
                 @if($product->product_image)
                     <?php
-                    //$product->product_image = str_replace("public/","",$product->product_image);
+                    $product->product_image = str_replace("public/","",$product->product_image);
                     ?>
                     <div>
                         <img src="{{asset("storage/$product->product_image")}}" style="width: 200px; height: auto" alt="">

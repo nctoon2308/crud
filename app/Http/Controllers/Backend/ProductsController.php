@@ -22,7 +22,11 @@ class ProductsController extends Controller
     }
 
     public function create(){
-        return view("backend.products.create");
+        $data = [];
+        $categories = DB::table('category')->get();
+        $data["categories"] = $categories;
+
+        return view("backend.products.create", $data);
     }
 
     public function delete($id){
@@ -37,9 +41,9 @@ class ProductsController extends Controller
         $product = ProductModel::findOrFail($id);
 
         $data = [];
+        $categories = DB::table('category')->get();
+        $data["categories"] = $categories;
         $data["product"] = $product;
-
-
 
         return view("backend.products.edit2",$data);
     }
@@ -50,6 +54,7 @@ class ProductsController extends Controller
         //validate
         $validatedData = $request->validate([
             'product_name' => 'required',
+            'category_id' => 'required',
             'product_image' => 'required',
             'product_publish' => 'required',
             'product_desc' => 'required',
@@ -58,6 +63,7 @@ class ProductsController extends Controller
         ]);
 
         $product_name = $request->input('product_name','');
+        $category_id = $request->input('category_id','');
         $product_status = $request->input('product_status',1);
         $product_desc = $request->input('product_desc','');
         $product_publish = $request->input('product_publish','');
@@ -77,6 +83,7 @@ class ProductsController extends Controller
         //gán dữ liệu từ request cho các thuộc tính của $product
         //$product là đối tượng khởi tạo từ model productModel
         $product->product_name = $product_name;
+        $product->category_id = $category_id;
         $product->product_status = $product_status;
         $product->product_desc = $product_desc;
         $product->product_publish = $product_publish;
@@ -95,6 +102,7 @@ class ProductsController extends Controller
 
         $validatedData = $request->validate([
             'product_name' => 'required',
+            'category_id' => 'required',
             'product_publish' => 'required',
             'product_desc' => 'required',
             'product_quantity' => 'required',
@@ -107,6 +115,7 @@ class ProductsController extends Controller
         echo "</pre>";
 
         $product_name = $request->input('product_name','');
+        $category_id = $request->input('category_id','');
         $product_status = $request->input('product_status','');
         $product_desc = $request->input('product_desc','');
         $product_publish = $request->input('product_publish','');
@@ -121,6 +130,7 @@ class ProductsController extends Controller
         $product = ProductModel::findOrFail($id);
 
         $product->product_name = $product_name;
+        $product->category_id = $category_id;
         $product->product_status = $product_status;
         $product->product_desc = $product_desc;
         $product->product_publish = $product_publish;
