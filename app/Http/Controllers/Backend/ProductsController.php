@@ -71,15 +71,12 @@ class ProductsController extends Controller
         $product_price = $request->input('product_price',0);
         $pathProductImage = $request->file('product_image')->store('public/productimages');
 
-
-
         $product = new ProductModel();
 
         //nếu chưa có $product_publish thì $product_publish sẽ được gán thời gian hiện tại
         if (!$product_publish){
             $product_publish = date("Y-m-d H:i:s");
         }
-
         //gán dữ liệu từ request cho các thuộc tính của $product
         //$product là đối tượng khởi tạo từ model productModel
         $product->product_name = $product_name;

@@ -29,6 +29,11 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Danh mục</span></a>
     </li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{url("backend/orders/index")}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Đơn hàng</span></a>
+    </li>
 
 
 

@@ -29,15 +29,38 @@ Route::post('/backend/product/store',"Backend\ProductsController@store");
 
 
 
-//crud - product
+//crud - category
 Route::get('/backend/category/index',"Backend\CategoryController@index");
 Route::get('/backend/category/delete/{id}',"Backend\CategoryController@delete");
 Route::post('/backend/category/destroy/{id}',"Backend\CategoryController@destroy");
 Route::get('/backend/category/edit2/{id}',"Backend\CategoryController@edit2");
 Route::post('/backend/category/update/{id}',"Backend\CategoryController@update");
 Route::get('/backend/category/create',"Backend\CategoryController@create");
-//lưu sản phẩm
+//lưu category
 Route::post('/backend/category/store',"Backend\CategoryController@store");
+
+
+//crud - order
+Route::get('/backend/orders/index',"Backend\OrderController@index");
+Route::get('/backend/orders/delete/{id}',"Backend\OrderController@delete");
+Route::post('/backend/orders/destroy/{id}',"Backend\OrderController@destroy");
+Route::get('/backend/orders/edit2/{id}',"Backend\OrderController@edit2");
+Route::post('/backend/orders/update/{id}',"Backend\OrderController@update");
+Route::get('/backend/orders/create',"Backend\OrderController@create");
+//lưu order
+Route::post('/backend/orders/store',"Backend\OrderController@store");
+
+
+
+
+
+
+Route::post('/backend/orders/searchProduct', "Backend\OrderController@searchProduct");
+Route::post('/backend/orders/ajaxSingleProduct', "Backend\OrderController@ajaxSingleProduct");
+
+
+
+
 
 
 
